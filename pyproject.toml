@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "data-quality-workshop"
+version = "0.1.0"
+description = ""
+authors = ["gabriel-garciae <eng.gabrielgevangelista@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+mkdocs = "^1.6.0"
+taskipy = "^1.12.2"
+pytest = "^8.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+format = """
+isort .
+black .
+"""
+kill = """
+for /f "tokens=5" %a in ('netstat -aon ^| findstr :8000') do taskkill /f /pid %a
+"""
+test = "pytest -v"
+run = """
+python app/main.py
+"""
+doc = "mkdocs serve"
