@@ -10,6 +10,9 @@ python = "^3.11"
 mkdocs = "^1.6.0"
 taskipy = "^1.12.2"
 pytest = "^8.2.1"
+duckdb = "^0.10.3"
+pydantic = "^2.7.2"
+pandera = "^0.19.3"
 
 [build-system]
 requires = ["poetry-core"]
